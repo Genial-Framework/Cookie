@@ -10,4 +10,4 @@
  * @copyright Copyright (c) 2017-2018 Genial Framework. <https://github.com/Genial-Framework>
  * @license   <https://github.com/Genial-Framework/Session/blob/master/LICENSE> New BSD License.
  */
-define('GENIAL_SESSION_DEPENDENT', true);
+define('GENIAL_COOKIE_DEPENDENT', true);
