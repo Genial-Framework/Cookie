@@ -22,7 +22,7 @@ class Utils
      * getCookieParams().
      *
      * Get the currently set cookie params.
-     * 
+     *
      * @return array Return the currently set cookie params.
      */
     public static function getCookieParams()
