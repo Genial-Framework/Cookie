@@ -29,5 +29,4 @@ class Utils
     {
         return session_get_cookie_params();
     }
-    
 }
