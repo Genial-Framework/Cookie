@@ -14,7 +14,7 @@
             </exclude>
         </whitelist>
     </filter>
-    <testsuite name="Genial-Framework/Session Test Suite">
+    <testsuite name="Genial-Framework/Cookie Test Suite">
         <directory suffix=".php">./tests</directory>
     </testsuite>
 </phpunit>
