@@ -18,7 +18,7 @@ namespace Genial\Cookie;
  */
 class Handler implements HandlerInterface
 {
-    public function set(string $name = null, $value = null, $expire)
+    public function set(string $name = null, $value, $expire)
     {
         if (is_null($name)) {
             throw new Exception\BadMethodCallException(sprintf(
@@ -35,10 +35,8 @@ class Handler implements HandlerInterface
         }
         $value = Utils::encode($value);
         setcookie(
-          
+
         );
         $_COOKIE[$name] = $value;
     }
-  
-  
 }
