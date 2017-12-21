@@ -1,3 +1,4 @@
+.travis.yml
 composer.json
 composer.lock
 composer.phar
@@ -8,6 +9,4 @@ README.md
 LICENSE.md
 .coveralls.yml
 phpunit.xml
-.travis.yml
-main.bootstrap.php
-change.log
+.styleci.yml
