@@ -11,3 +11,11 @@
  * @license   <https://github.com/Genial-Framework/Cookie/blob/master/LICENSE> New BSD License.
  */
 define('COOKIE_DEPENDENT_ACTIVE', true);
+
+if (!function_exists('env')) 
+{
+    trigger_error(
+        'The `env()` function does not exist.',
+        E_USER_ERROR
+    );
+}
