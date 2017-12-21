@@ -1,7 +1,7 @@
 {
     "name": "genial-framework/cookie",
     "type": "library",
-    "description": "Cookie dependent from Genial Framework.",
+    "description": "Cookie handler to easily manage cookies for Genial Framework.",
     "homepage": "https://github.com/Genial-Framework/Cookie",
     "license": "BSD-3-Clause",
     "authors": [
@@ -18,7 +18,8 @@
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": "^7.0",
+        "genial-framework/env": "1.*"
     },
     "autoload": {
         "psr-4": {
