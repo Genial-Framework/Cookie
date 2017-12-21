@@ -1,7 +1,7 @@
 [![StyleCI](https://styleci.io/repos/114421856/shield?branch=master)](https://styleci.io/repos/114421856) [![Coveralls github branch](https://img.shields.io/coveralls/github/Genial-Framework/Cookie/master.svg?style=flat-square)](https://coveralls.io/github/Genial-Framework/Cookie?branch=master) [![Travis](https://img.shields.io/travis/Genial-Framework/Cookie.svg?style=flat-square)](https://travis-ci.org/Genial-Framework/Cookie) 
 
 -------
-Cookie dependent from Genial Framework.
+Cookie handler to easily manage cookies for Genial Framework.
 
 ## Installation
 ```
