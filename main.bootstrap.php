@@ -10,5 +10,4 @@
  * @copyright Copyright (c) 2017-2018 Genial Framework. <https://github.com/Genial-Framework>
  * @license   <https://github.com/Genial-Framework/Cookie/blob/master/LICENSE> New BSD License.
  */
-
 define('COOKIE_DEPENDENT_ACTIVE', true);
