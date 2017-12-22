@@ -18,7 +18,22 @@ namespace Genial\Cookie;
  */
 class Handler implements HandlerInterface
 {
-    public function set(string $name = null, $value, $expire)
+    /**
+     * set().
+     *
+     * Set a new cookie variable.
+     *
+     * @param string|null $name The name of the cookie variable.
+     * @param mixed|null $name  The value of the cookie variable.
+     * @param int|{0} $expire   The expiration time on the cookie.
+     *
+     * @throws BadMethodCallException   If the $name argument is missing.
+     * @throws UnexpectedValueException If the name argument is empty.
+     * @throws LengthException          If the name argument is too long.
+     *
+     * @return bool|true If the cookie was correctly created.
+     */
+    public function set(string $name = null, $value = null, $expire = 0)
     {
         if (is_null($name)) {
             throw new Exception\BadMethodCallException(sprintf(
@@ -33,10 +48,23 @@ class Handler implements HandlerInterface
                 __METHOD__
             ));
         }
+        if (strlen($name) > 30) {
+            throw new Exception\LengthException(sprintf(
+                '`%s` The `$name` argument is too long.',
+                __METHOD__
+            ));
+        }
         $value = Utils::encode($value);
         setcookie(
-
+            $name,
+            $value,
+            $expire,
+            $this->cookieParams['path'],
+            $this->cookieParams['domain']
+            $this->cookieParams['secure'],
+            $this->cookieParams['httponly']
         );
         $_COOKIE[$name] = $value;
+        return true;
     }
 }
