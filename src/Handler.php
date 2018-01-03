@@ -6,7 +6,6 @@
  * @author    Genial Contributors <https://github.com/orgs/Genial-Framework/people>
  *
  * @link      <https://github.com/Genial-Framework/Cookie> for the canonical source repository.
- *
  * @copyright Copyright (c) 2017-2018 Genial Framework. <https://github.com/Genial-Framework>
  * @license   <https://github.com/Genial-Framework/Cookie/blob/master/LICENSE> New BSD License.
  */
@@ -36,28 +35,7 @@ class Handler implements HandlerInterface
      */
     public function set(string $name = null, $value = null, $expire = 0)
     {
-        if (is_null($name))
-        {
-            throw new Exception\BadMethodCallException(sprintf(
-                '`%s` The `$name` argument is missing.',
-                __METHOD__
-            ));
-        }
-        $name = trim($name);
-        if (empty($name) || $name == '')
-        {
-            throw new Exception\UnexpectedValueException(sprintf(
-                '`%s` The `$name` argument is empty.',
-                __METHOD__
-            ));
-        }
-        if (strlen($name) > 30)
-        {
-            throw new Exception\LengthException(sprintf(
-                '`%s` The `$name` argument is too long.',
-                __METHOD__
-            ));
-        }
+        $name = Utils::validCookieName($name);
         $value = Utils::encode($value);
         setcookie(
             $name,
@@ -87,28 +65,7 @@ class Handler implements HandlerInterface
      */
     public function delete(string $name = null)
     {
-        if (is_null($name))
-        {
-            throw new Exception\BadMethodCallException(sprintf(
-                '`%s` The `$name` argument is missing.',
-                __METHOD__
-            ));
-        }
-        $name = trim($name);
-        if (empty($name) || $name == '')
-        {
-            throw new Exception\UnexpectedValueException(sprintf(
-                '`%s` The `$name` argument is empty.',
-                __METHOD__
-            ));
-        }
-        if (strlen($name) > 30)
-        {
-            throw new Exception\LengthException(sprintf(
-                '`%s` The `$name` argument is too long.',
-                __METHOD__
-            ));
-        }
+        $name = Utils::validCookieName($name);
         if (isset($_COOKIE[$name]))
         {
             unset($_COOKIE[$name]);
@@ -141,28 +98,7 @@ class Handler implements HandlerInterface
      */
     public function get(string $name = null, $defRetVal = null)
     {
-        if (is_null($name))
-        {
-            throw new Exception\BadMethodCallException(sprintf(
-                '`%s` The `$name` argument is missing.',
-                __METHOD__
-            ));
-        }
-        $name = trim($name);
-        if (empty($name) || $name == '')
-        {
-            throw new Exception\UnexpectedValueException(sprintf(
-                '`%s` The `$name` argument is empty.',
-                __METHOD__
-            ));
-        }
-        if (strlen($name) > 30)
-        {
-            throw new Exception\LengthException(sprintf(
-                '`%s` The `$name` argument is too long.',
-                __METHOD__
-            ));
-        }
+        $name = Utils::validCookieName($name);
         if (isset($_COOKIE[$name]))
         {
             return Utils::decode($_COOKIE[$name]);
