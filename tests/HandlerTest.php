@@ -20,6 +20,17 @@ use PHPUnit\Framework\TestCase;
 final class HandlerTest extends TestCase
 {
 
-
+    /**
+     * testSet().
+     *
+     * Test the validate function.
+     *
+     * @return void
+     */
+    public function testSet()
+    {
+        $handler = new Handler();
+        $this->assertTrue($handler->set('hello', 23332, time() - 42000));
+    }
 
 }
