@@ -21,7 +21,7 @@ class Manager implements ManagerInterface
     /**
      * @var array|[] $cookieParams The internal defualt cookie params.
      */
-    private $cookieParams = [];
+    protected $cookieParams = [];
   
     /**
      * __construct()
