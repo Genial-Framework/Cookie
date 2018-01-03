@@ -18,6 +18,7 @@ namespace Genial\Cookie;
  */
 class Handler implements HandlerInterface
 {
+    
     /**
      * set().
      *
@@ -35,20 +36,23 @@ class Handler implements HandlerInterface
      */
     public function set(string $name = null, $value = null, $expire = 0)
     {
-        if (is_null($name)) {
+        if (is_null($name))
+        {
             throw new Exception\BadMethodCallException(sprintf(
                 '`%s` The `$name` argument is missing.',
                 __METHOD__
             ));
         }
         $name = trim($name);
-        if (empty($name) || $name == '') {
+        if (empty($name) || $name == '')
+        {
             throw new Exception\UnexpectedValueException(sprintf(
                 '`%s` The `$name` argument is empty.',
                 __METHOD__
             ));
         }
-        if (strlen($name) > 30) {
+        if (strlen($name) > 30)
+        {
             throw new Exception\LengthException(sprintf(
                 '`%s` The `$name` argument is too long.',
                 __METHOD__
@@ -58,7 +62,7 @@ class Handler implements HandlerInterface
         setcookie(
             $name,
             $value,
-            $expire,
+            intval($expire),
             $this->cookieParams['path'],
             $this->cookieParams['domain']
             $this->cookieParams['secure'],
@@ -67,4 +71,103 @@ class Handler implements HandlerInterface
         $_COOKIE[$name] = $value;
         return true;
     }
+    
+    /**
+     * delete().
+     *
+     * Delete a cookie variable.
+     *
+     * @param string|null $name The name of the cookie variable.
+     *
+     * @throws BadMethodCallException   If the $name argument is missing.
+     * @throws UnexpectedValueException If the name argument is empty.
+     * @throws LengthException          If the name argument is too long.
+     *
+     * @return bool|true If the cookie was successfully deleted.
+     */
+    public function delete(string $name = null)
+    {
+        if (is_null($name))
+        {
+            throw new Exception\BadMethodCallException(sprintf(
+                '`%s` The `$name` argument is missing.',
+                __METHOD__
+            ));
+        }
+        $name = trim($name);
+        if (empty($name) || $name == '')
+        {
+            throw new Exception\UnexpectedValueException(sprintf(
+                '`%s` The `$name` argument is empty.',
+                __METHOD__
+            ));
+        }
+        if (strlen($name) > 30)
+        {
+            throw new Exception\LengthException(sprintf(
+                '`%s` The `$name` argument is too long.',
+                __METHOD__
+            ));
+        }
+        if (isset($_COOKIE[$name]))
+        {
+            unset($_COOKIE[$name]);
+            setcookie(
+                $name,
+                '',
+                time() - 42000,
+                $this->cookieParams['path'],
+                $this->cookieParams['domain']
+                $this->cookieParams['secure'],
+                $this->cookieParams['httponly']
+            );
+        }
+        return true;
+    }
+    
+    /**
+     * get().
+     *
+     * Get a cookie variable.
+     *
+     * @param string|null $name     The name of the cookie variable.
+     * @param mixed|null $defRetVal The defualt return value if the cookie is not found.
+     *
+     * @throws BadMethodCallException   If the $name argument is missing.
+     * @throws UnexpectedValueException If the name argument is empty.
+     * @throws LengthException          If the name argument is too long.
+     *
+     * @return mixed The cookie value.
+     */
+    public function get(string $name = null, $defRetVal = null)
+    {
+        if (is_null($name))
+        {
+            throw new Exception\BadMethodCallException(sprintf(
+                '`%s` The `$name` argument is missing.',
+                __METHOD__
+            ));
+        }
+        $name = trim($name);
+        if (empty($name) || $name == '')
+        {
+            throw new Exception\UnexpectedValueException(sprintf(
+                '`%s` The `$name` argument is empty.',
+                __METHOD__
+            ));
+        }
+        if (strlen($name) > 30)
+        {
+            throw new Exception\LengthException(sprintf(
+                '`%s` The `$name` argument is too long.',
+                __METHOD__
+            ));
+        }
+        if (isset($_COOKIE[$name]))
+        {
+            return Utils::decode($_COOKIE[$name]);
+        }
+        return $defRetVal;
+    }
+    
 }
