@@ -19,8 +19,20 @@ class Manager implements ManagerInterface
 {
   
     /**
-     * @var array|Utils::getCookieParams() $cookieParams The internal defualt cookie params.
+     * @var array|[] $cookieParams The internal defualt cookie params.
      */
-    private $cookieParams = Utils::getCookieParams();
+    private $cookieParams = [];
+  
+    /**
+     * __construct()
+     *
+     * Set the internal cookie params.
+     *
+     * @return void.
+     */
+    function __construct()
+    {
+        $this->cookieParams = Utils::getCookieParams();
+    }
   
 }
