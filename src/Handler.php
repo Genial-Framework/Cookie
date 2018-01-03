@@ -41,18 +41,10 @@ class Handler extends Manager implements HandlerInterface
             $name,
             $value,
             intval($expire),
-            env('cookie', 'path', $this->cookieParams['path']) == 'null'
-                ? $this->cookieParams['path']
-                : env('cookie', 'path', $this->cookieParams['path']);
-            env('cookie', 'domain', $this->cookieParams['domain']) == 'null'
-                ? $this->cookieParams['domain']
-                : env('cookie', 'domain', $this->cookieParams['domain']);
-            env('cookie', 'secure', $this->cookieParams['secure'])
-                ? $this->cookieParams['secure']
-                : env('cookie', 'secure', $this->cookieParams['secure']);
+            env('cookie', 'path', $this->cookieParams['path']),
+            env('cookie', 'domain', $this->cookieParams['domain']),
+            env('cookie', 'secure', $this->cookieParams['secure']),
             env('cookie', 'http_only', $this->cookieParams['httponly'])
-                ? $this->cookieParams['httponly']
-                : env('cookie', 'http_only', $this->cookieParams['httponly']);
         );
         $_COOKIE[$name] = $value;
         return true;
@@ -81,18 +73,10 @@ class Handler extends Manager implements HandlerInterface
                 $name,
                 '',
                 time() - 42000,
-                env('cookie', 'path', $this->cookieParams['path']) == 'null'
-                    ? $this->cookieParams['path']
-                    : env('cookie', 'path', $this->cookieParams['path']);
-                env('cookie', 'domain', $this->cookieParams['domain']) == 'null'
-                    ? $this->cookieParams['domain']
-                    : env('cookie', 'domain', $this->cookieParams['domain']);
-                env('cookie', 'secure', $this->cookieParams['secure'])
-                    ? $this->cookieParams['secure']
-                    : env('cookie', 'secure', $this->cookieParams['secure']);
+                env('cookie', 'path', $this->cookieParams['path']),
+                env('cookie', 'domain', $this->cookieParams['domain']),
+                env('cookie', 'secure', $this->cookieParams['secure']),
                 env('cookie', 'http_only', $this->cookieParams['httponly'])
-                    ? $this->cookieParams['httponly']
-                    : env('cookie', 'http_only', $this->cookieParams['httponly']);
             );
         }
         return true;
