@@ -6,7 +6,6 @@
  * @author    Genial Contributors <https://github.com/orgs/Genial-Framework/people>
  *
  * @link      <https://github.com/Genial-Framework/Cookie> For the canonical source repository.
- *
  * @copyright Copyright (c) 2017-2018 Genial Framework. <https://github.com/Genial-Framework>
  * @license   <https://github.com/Genial-Framework/Cookie/blob/master/LICENSE> New BSD License.
  */
@@ -52,47 +51,47 @@ class Utils
             {
                 $res = 'n|n';
             }
-		} elseif (is_bool($val))
+        } elseif (is_bool($val))
         {
-			if ($val)
+            if ($val)
             {
-				$res = 'b|t';
-			} else
+                $res = 'b|t';
+            } else
             {
-				$res = 'b|f';
-			}
-		} elseif (is_int($val))
+                $res = 'b|f';
+            }
+        } elseif (is_int($val))
         {
             if ($val < PHP_INT_MAX)
             {
-			    $res = 'i|' . strval($val);
+                $res = 'i|' . strval($val);
             } else
             {
                 $res = 'n|n';
             }
-		} elseif (is_float($val))
+        } elseif (is_float($val))
         {
             if (!(strlen(strval($val)) > 250))
             {
-			    $res = 'f|' . strval($val);
+                $res = 'f|' . strval($val);
             } else
             {
                 $res = 'n|n';
             }
-		} elseif (is_string($val))
+        } elseif (is_string($val))
         {
-			if (!(strlen($val) > 500))
+            if (!(strlen($val) > 500))
             {
-			    $res = "s|$val";
+                $res = "s|$val";
             } else
             {
                 $res = 'n|n';
             }
-		} else
+        } else
         {
-			$res = 'n|n';
-		}
-		return $res;
+            $res = 'n|n';
+        }
+        return $res;
     }
     
     /**
@@ -107,31 +106,31 @@ class Utils
     public static function decode(string $data)
     {
         $val = substr($data, 2);
-		if ($data[0] == 'a')
+        if ($data[0] == 'a')
         {
-			return json_decode($val);
-		} elseif ($data[0] == 'b')
+            return json_decode($val);
+        } elseif ($data[0] == 'b')
         {
-			if ($val == 't')
+            if ($val == 't')
             {
-				return true;
-			} else
+                return true;
+            } else
             {
-				return false;
-			}
-		} elseif ($data[0] == 'i')
+                return false;
+            }
+        } elseif ($data[0] == 'i')
         {
-			return (int) $val;
-		} elseif ($data[0] == 'f')
+            return (int) $val;
+        } elseif ($data[0] == 'f')
         {
-			return (float) $val;
-		} elseif ($data[0] == 's')
+            return (float) $val;
+        } elseif ($data[0] == 's')
         {
-			return $val;
-		} else
+            return $val;
+        } else
         {
-			return null;
-		}
+            return null;
+        }
     }
     
     /**
