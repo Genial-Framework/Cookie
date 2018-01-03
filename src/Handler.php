@@ -15,7 +15,7 @@ namespace Genial\Cookie;
 /**
  * Handler.
  */
-class Handler implements HandlerInterface
+class Handler extends Manager implements HandlerInterface
 {
     
     /**
