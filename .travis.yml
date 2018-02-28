@@ -1,11 +1,14 @@
 language: php
 php:
-    - '7.2'
+    - 7.2
+    - nightly
 os:
     - windows
     - linux
 matrix:
     fast_finish: true
+    allowed_failures:
+        - nightly
 sudo: false
 install:
     - travis_retry composer install --no-interaction
