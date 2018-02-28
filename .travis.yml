@@ -10,7 +10,7 @@ git:
     depth: 4
 matrix:
     fast_finish: true
-    allowed_failures:
+    allow_failures:
         - php: nightly
 sudo: false
 install:
