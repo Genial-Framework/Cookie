@@ -6,10 +6,12 @@ php:
 os:
     - windows
     - linux
+git:
+    depth: 4
 matrix:
     fast_finish: true
     allowed_failures:
-        - nightly
+        - php: nightly
 sudo: false
 install:
     - travis_retry composer install --no-interaction
